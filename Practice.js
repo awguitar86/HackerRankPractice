@@ -46,3 +46,47 @@ function countingValleys(steps, path) {
     }
     return vallies;
 }
+
+/* FIRST DUPLICATE
+Given an array [a] that contains only numbers in the range from 1 to a.length, find the first duplicate number for which the second occurrence has the minimal index. 
+In other words, if there are more than 1 duplicated numbers, return the number for which the second occurrence has a smaller index than the second occurrence of 
+the other number does. If there are no such elements, return -1. */
+function firstDuplicate(a) {
+    for (let i of a) {
+      let posi = Math.abs(i) - 1
+      if (a[posi] < 0) return posi + 1
+      a[posi] = a[posi] * -1
+    }
+    return -1
+}
+
+/* FIRST NOT REPEATING CHARACTER 
+Given a string 's' consisting of small English letters, find and return the first instance of a non-repeating character in it. If there is no such character, return '_'.*/
+function firstNotRepeatingCharacter(s) {
+	let strings = s.split('');
+	let repeating = {};
+	let nonRepeat = '';
+	for (let i = 0; i < s.length; i++) {
+		repeating[strings[i]] ? repeating[strings[i]]++ : repeating[strings[i]] = 1;
+	}
+	for (let str in repeating) {
+		!nonRepeat && repeating[str] === 1 ? nonRepeat = str : null;
+	}
+	return nonRepeat ? nonRepeat : '_';
+}
+
+/* ROTATE IMAGE
+Note: Try to solve this task in-place (with O(1) additional memory), since this is what you'll be asked to do during an interview.
+You are given an n x n 2D matrix that represents an image. Rotate the image by 90 degrees (clockwise).*/
+function rotateImage(a) {
+	let nestedArrs = [];
+	for (let i = 0; i < a.length; i++) {
+		nestedArrs.push([]);
+	}
+	for (let i = 0; i < a.length; i++) {
+		for (let x = 0; x < a[i].length; x++) {
+			nestedArrs[x].unshift(a[i][x]);
+		}
+	}
+	return nestedArrs;
+}
