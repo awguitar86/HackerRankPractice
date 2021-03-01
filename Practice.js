@@ -91,6 +91,41 @@ function rotateImage(a) {
 	return nestedArrs;
 }
 
+/* PALINDROME
+ Given a string, return true if the string is a palindrome
+ or false if it is not.  Palindromes are strings that
+ form the same word if it is reversed. *Do* include spaces
+ and punctuation in determining if the string is a palindrome.
+ --- Examples:
+   palindrome("abba") === true
+   palindrome("abcdefg") === false */
+
+/* 1st SOLUTION */
+function palindrome(str) {
+    return str.toLowerCase().split('').reverse().join('') === str.toLowerCase();
+}
+/* 2nd Solution */
+function palindrome(str) { // When using the every() function, it checks if the last letters of the string equal the first leters of the string.
+  return str.toLowerCase().split('').every((char, i) => char === str[str.length - i - 1].toLowerCase() );
+}
+/* 3rd Solution */
+function palindrome(str) {
+  let strArr = [];
+  for (let s of str.toLowerCase().split('')) {
+    strArr.unshift(s);
+  }
+  return strArr.join('');
+}
+/* 4th Solution */
+function palindrome(str) {
+  let reverse = '';
+  for (let character of str) {
+     reverse = character + reverse;
+  }
+  return str === reverse;
+}
+
+
 /* SUDOKU 2
 Sudoku is a number-placement puzzle. The objective is to fill a 9 × 9 grid with numbers in such a way that each column, each row,
 and each of the nine 3 × 3 sub-grids that compose the grid all contain all of the numbers from 1 to 9 one time.
